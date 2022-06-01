@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Pavel Gerasimov](https://up.htmlacademy.ru/javascript/26/user/1971177).
-* Наставник: `Неизвестно`.
+* Наставник: [Alena Hrytsuk](https://github.com/HeleneGritsuk).
 
 ---
 
