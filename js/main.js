@@ -1,31 +1,24 @@
 // Pick random number
-const numbersArray = [];
-
-const randomNumber = (from, to) => {
+const getRandomNumber = (from, to) => {
+  const numbersArray = [];
   if (from < 0 || to < 0) {
-    return ('Number can be only >= 0');
-  } else if (to < from) {
-    return ('Number TO cant be lower than FROM');
+    return null;
+  } else if (from > to) {
+    [from, to] = [to, from];
   }
   for (let i = from; i <= to; i++) {
     numbersArray.push(i);
   }
-  const Number = numbersArray[Math.floor(Math.random() * numbersArray.length)];
-  return (`Random number: ${Number}`);
+  return numbersArray[Math.floor(Math.random() * numbersArray.length)];
 };
 
 // eslint-disable-next-line no-console
-console.log(randomNumber(37, 1000));
+console.log(getRandomNumber(10, 1));
 
 
 //Check string max length
-const stringLength = (string, maxlength) => {
-  if (string.length > maxlength) {
-    return (`Too long text: ${string.length}, maximum characters: ${maxlength}`);
-  }
-  return (`Text length: ${string.length}, characters left: ${maxlength - string.length}`);
-};
+const checkStringLength = (string, maxlength) => string.length <= maxlength;
 
 // eslint-disable-next-line no-console
-console.log(stringLength('Text string for count length', 30));
+console.log(checkStringLength('Text string for count length', 10));
 
