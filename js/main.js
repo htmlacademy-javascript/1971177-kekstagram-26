@@ -16,7 +16,23 @@ const getRandomNumber = (from, to) => {
 console.log(getRandomNumber(10, 1));
 
 
-//Check string max length
+// Pick random number - MDN example (short link - shorturl.at/eDFS4)
+const getRandomIntInclusive = (min, max) => {
+  if (min < 0 || max < 0) {
+    return null;
+  } else if (min > max) {
+    [min, max] = [max, min];
+  }
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+};
+
+// eslint-disable-next-line no-console
+console.log(getRandomIntInclusive(-10, 1));
+
+
+// Check string max length
 const checkStringLength = (string, maxlength) => string.length <= maxlength;
 
 // eslint-disable-next-line no-console
