@@ -69,7 +69,6 @@ const generateMockObjects = (amount) => {
 
     // Generate comments
     for (let comment = 0; comment < getRandomNumber(1, 5); comment++) {
-
       const commentObject = {
         id: 0,
         avatar: '',
