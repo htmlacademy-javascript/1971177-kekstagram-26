@@ -32,7 +32,7 @@ const checkStringLength = (string, maxlength) => string.length <= maxlength;
 const getRandomItemFromArray = (names) => names[Math.floor(Math.random() * names.length)];
 
 // Get string from text template function
-const splitTextToStrings = (array) => (getRandomItemFromArray(array.split('\n')));
+const splitTextToStrings = (string) => (getRandomItemFromArray(string.split('\n')));
 
 const getRandomComments = (amount) => {
   // empty array for comments generator
