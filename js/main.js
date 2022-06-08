@@ -1,5 +1,5 @@
 // Template names for comments
-const commenterNameList = ['Александр', 'Матвей', 'Артем', 'Михаил', 'Иван', 'Тимофей', 'Кирилл', 'Дмитрий', 'Даниил', 'Мария',
+const authorNames = ['Александр', 'Матвей', 'Артем', 'Михаил', 'Иван', 'Тимофей', 'Кирилл', 'Дмитрий', 'Даниил', 'Мария',
   'Варвара', 'Виктория', 'Алиса', 'Ксения', 'Василиса', 'Милана', 'Ева', 'Александра'];
 
 // Template text for comments
@@ -13,23 +13,23 @@ const commentTextTemplate = 'Всё отлично!\n' +
 
 // Pick random number function
 const getRandomNumber = (from, to) => {
-  const numbersArray = [];
+  const numbers = [];
   if (from < 0 || to < 0) {
     return null;
   } else if (from > to) {
     [from, to] = [to, from];
   }
   for (let i = from; i <= to; i++) {
-    numbersArray.push(i);
+    numbers.push(i);
   }
-  return numbersArray[Math.floor(Math.random() * numbersArray.length)];
+  return numbers[Math.floor(Math.random() * numbers.length)];
 };
 
 // Check string max length function
 const checkStringLength = (string, maxlength) => string.length <= maxlength;
 
 // Get random item from array function
-const getRandomItemFromArray = (array) => array[Math.floor(Math.random() * array.length)];
+const getRandomItemFromArray = (names) => names[Math.floor(Math.random() * names.length)];
 
 // Get string from text template function
 const splitTextToStrings = (array) => (getRandomItemFromArray(array.split('\n')));
@@ -37,13 +37,13 @@ const splitTextToStrings = (array) => (getRandomItemFromArray(array.split('\n'))
 // Elements generator function
 const generateMockObjects = (amount) => {
   // empty array for objects
-  const photosDescriptionArray = [];
+  const photos = [];
 
   // Generate basic object information
   for (let item = 1; item <= amount; item++) {
 
     // empty array for comments generator
-    const tempCommentArray = [];
+    const comments = [];
 
     // base structure object
     const photoDescription = {
@@ -78,14 +78,14 @@ const generateMockObjects = (amount) => {
       commentObject.id = comment;
       commentObject.avatar = `img/avatar-${getRandomNumber(1, 6)}.svg`;
       commentObject.message = splitTextToStrings(commentTextTemplate);
-      commentObject.name = getRandomItemFromArray(commenterNameList);
-      tempCommentArray.push(commentObject);
+      commentObject.name = getRandomItemFromArray(authorNames);
+      comments.push(commentObject);
     }
-    photoDescription.comments = tempCommentArray;
-    photosDescriptionArray.push(photoDescription);
+    photoDescription.comments = comments;
+    photos.push(photoDescription);
   }
 
-  return photosDescriptionArray;
+  return photos;
 };
 
 generateMockObjects(25);
