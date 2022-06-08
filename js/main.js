@@ -34,57 +34,41 @@ const getRandomItemFromArray = (names) => names[Math.floor(Math.random() * names
 // Get string from text template function
 const splitTextToStrings = (array) => (getRandomItemFromArray(array.split('\n')));
 
+const getRandomComments = (amount) => {
+  // empty array for comments generator
+  const comments = [];
+  // Generate comments
+  for (let comment = 0; comment < amount; comment++) {
+    // Generate comments object
+    const commentObject = {
+      id: comment,
+      avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+      message: splitTextToStrings(commentTextTemplate),
+      name: getRandomItemFromArray(authorNames)
+    };
+    comments.push(commentObject);
+  }
+  return comments;
+};
+
 // Elements generator function
 const generateMockObjects = (amount) => {
   // empty array for objects
   const photos = [];
-
   // Generate basic object information
   for (let item = 1; item <= amount; item++) {
-
-    // empty array for comments generator
-    const comments = [];
-
-    // base structure object
+    // Generate basic object
     const photoDescription = {
-      id: 0,
-      url: '',
-      description: '',
-      likes: 0,
-      comments:
-        [
-          {
-            id: 0,
-            avatar: '',
-            message: '',
-            name: ''
-          }
-        ]
+      id: item,
+      url: `photos/${item}.jpg`,
+      description: 'Some photo description',
+      likes: getRandomNumber(15, 200)
     };
-
-    photoDescription.id = item;
-    photoDescription.url = `photos/${item}.jpg`;
-    photoDescription.description = 'Some photo description';
-    photoDescription.likes = getRandomNumber(15, 200);
-
-    // Generate comments
-    for (let comment = 0; comment < getRandomNumber(1, 5); comment++) {
-      const commentObject = {
-        id: 0,
-        avatar: '',
-        message: '',
-        name: ''
-      };
-      commentObject.id = comment;
-      commentObject.avatar = `img/avatar-${getRandomNumber(1, 6)}.svg`;
-      commentObject.message = splitTextToStrings(commentTextTemplate);
-      commentObject.name = getRandomItemFromArray(authorNames);
-      comments.push(commentObject);
-    }
-    photoDescription.comments = comments;
+    // Add comments array to basic object
+    photoDescription.comments = getRandomComments(getRandomNumber(1, 5));
+    // Push final object to array
     photos.push(photoDescription);
   }
-
   return photos;
 };
 
