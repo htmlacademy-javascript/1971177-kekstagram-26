@@ -1,4 +1,4 @@
-import {generateMockObjects} from './mock-object.js';
+import {generateMockObjects} from './mock-data.js';
 
 generateMockObjects(25);
 
